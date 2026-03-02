@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Atlas Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-mode">
+    <div class="offline-container">
+        <div class="offline-content">
+            <i class="fas fa-wifi-slash"></i>
+            <h1>Você está offline</h1>
+            <p>Conecte-se à internet para acessar</p>
+            <p>os conteúdos atualizados.</p>
+            <p class="small">Seus dados salvos ainda estão disponíveis</p>
+            <div class="offline-actions">
+                <button onclick="window.location.reload()" class="auth-btn">
+                    <i class="fas fa-sync-alt"></i> Tentar novamente
+                </button>
+                <button onclick="window.location.href='index.html'" class="auth-btn secondary">
+                    <i class="fas fa-home"></i> Ir para Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Pro - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-mode">
+    <div class="auth-container">
+        <div class="auth-box">
+            <img src="assets/images/logo.png" alt="Atlas Pro" class="auth-logo" onerror="this.src='https://via.placeholder.com/80x80/00d4ff/000000?text=AP'">
+            <h2>Bem-vindo ao Atlas Pro</h2>
+            
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">Entrar</button>
+                <button class="tab-btn" onclick="switchTab('register')">Cadastrar</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active" onsubmit="return false;">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="loginEmail" placeholder="Seu email" required autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="loginPassword" placeholder="Sua senha" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="auth-btn" onclick="handleLogin()">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </button>
+                <a href="#" class="forgot-password" onclick="showNotification('Função em desenvolvimento', 'info')">Esqueceu a senha?</a>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form" onsubmit="return false;">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="regName" placeholder="Seu nome" required autocomplete="name">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="regEmail" placeholder="Seu email" required autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="regPassword" placeholder="Senha (mín. 6 caracteres)" required autocomplete="new-password">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="regConfirmPassword" placeholder="Confirmar senha" required autocomplete="new-password">
+                </div>
+                <button type="submit" class="auth-btn" onclick="handleRegister()">
+                    <i class="fas fa-user-plus"></i> Cadastrar
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Versão 1.0.0 - Atlas Pro</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
