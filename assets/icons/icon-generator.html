@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas App - Gerador de Ícones</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1f1f2e, #2a2a3f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
+            margin-bottom: 30px;
+        }
+        
+        .icon-preview {
+            background: #1f1f2e;
+            border-radius: 50px;
+            padding: 30px;
+            display: inline-block;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 2px solid rgba(0,212,255,0.3);
+        }
+        
+        canvas {
+            display: block;
+            border-radius: 60px;
+            box-shadow: 0 0 30px rgba(0,212,255,0.5);
+        }
+        
+        .sizes {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .size-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #00d4ff;
+            color: #00d4ff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .size-btn:hover {
+            background: #00d4ff;
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px #00d4ff;
+        }
+        
+        .size-btn.active {
+            background: #00d4ff;
+            color: #000;
+        }
+        
+        .download-area {
+            margin-top: 30px;
+        }
+        
+        .download-btn {
+            background: linear-gradient(90deg, #00d4ff, #00ff6a);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,212,255,0.3);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,212,255,0.5);
+        }
+        
+        .instructions {
+            margin-top: 30px;
+            color: #aaa;
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: left;
+            max-width: 600px;
+        }
+        
+        .instructions h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+        
+        .instructions ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .instructions li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .instructions li::before {
+            content: '✓';
+            color: #00ff6a;
+            position: absolute;
+            left: 0;
+        }
+        
+        .badge {
+            background: #00d4ff;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✨ Atlas App - Gerador de Ícones ✨</h1>
+        
+        <div class="icon-preview">
+            <canvas id="logoCanvas" width="512" height="512"></canvas>
+        </div>
+        
+        <div class="sizes">
+            <button class="size-btn active" onclick="changeSize(512)">512x512</button>
+            <button class="size-btn" onclick="changeSize(384)">384x384</button>
+            <button class="size-btn" onclick="changeSize(192)">192x192</button>
+            <button class="size-btn" onclick="changeSize(152)">152x152</button>
+            <button class="size-btn" onclick="changeSize(144)">144x144</button>
+            <button class="size-btn" onclick="changeSize(128)">128x128</button>
+            <button class="size-btn" onclick="changeSize(96)">96x96</button>
+            <button class="size-btn" onclick="changeSize(72)">72x72</button>
+        </div>
+        
+        <div class="download-area">
+            <button class="download-btn" onclick="downloadIcon()">
+                <i class="fas fa-download"></i> Baixar Ícone
+            </button>
+        </div>
+        
+        <div class="instructions">
+            <h3>📱 Instruções para usar no APK/PWA:</h3>
+            <ul>
+                <li>Baixe os ícones em todos os tamanhos necessários</li>
+                <li>Salve na pasta: <code>/assets/icons/</code></li>
+                <li>Nomes sugeridos: <code>icon-72x72.png</code>, <code>icon-96x96.png</code>, etc.</li>
+                <li>O ícone principal (512x512) será usado na Play Store</li>
+                <li>Perfeito para PWA e APK nativo</li>
+            </ul>
+            <p style="text-align: center; margin-top: 20px;">
+                <span class="badge">Gradiente #00d4ff → #00ff6a</span>
+                <span class="badge">Formato PNG</span>
+                <span class="badge">Fundo Transparente</span>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        let currentSize = 512;
+        const canvas = document.getElementById('logoCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function drawLogo(size) {
+            canvas.width = size;
+            canvas.height = size;
+            
+            // Limpar canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Fundo circular com sombra interna
+            ctx.shadowColor = '#00d4ff';
+            ctx.shadowBlur = size * 0.1;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            
+            // Círculo de fundo com gradiente
+            const bgGradient = ctx.createRadialGradient(
+                size/2, size/2, 0,
+                size/2, size/2, size/2
+            );
+            bgGradient.addColorStop(0, '#2a2a3f');
+            bgGradient.addColorStop(1, '#1a1a2a');
+            
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
+            ctx.fillStyle = bgGradient;
+            ctx.fill();
+            
+            // Resetar sombra para o texto
+            ctx.shadowBlur = size * 0.15;
+            
+            // Gradiente principal para o "A"
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#00d4ff');
+            gradient.addColorStop(1, '#00ff6a');
+            
+            // Desenhar letra "A" estilizada
+            ctx.fillStyle = gradient;
+            ctx.font = `bold ${size * 0.5}px 'Segoe UI', 'Arial Black', sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('A', size/2, size/2.2);
+            
+            // Desenhar barra de progresso estilizada
+            ctx.shadowBlur = size * 0.05;
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = size * 0.06;
+            ctx.lineCap = 'round';
+            
+            // Barra horizontal com efeito 3D
+            ctx.beginPath();
+            ctx.moveTo(size * 0.3, size * 0.7);
+            ctx.lineTo(size * 0.7, size * 0.7);
+            ctx.stroke();
+            
+            // Adicionar brilho nos cantos
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.arc(size * 0.35, size * 0.7, size * 0.03, 0, Math.PI * 2);
+            ctx.fillStyle = '#00ff6a';
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(size * 0.65, size * 0.7, size * 0.03, 0, Math.PI * 2);
+            ctx.fillStyle = '#00d4ff';
+            ctx.fill();
+            
+            // Adicionar detalhes de circuito
+            ctx.shadowBlur = size * 0.02;
+            ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+            ctx.lineWidth = size * 0.01;
+            
+            // Círculos decorativos
+            for(let i = 0; i < 4; i++) {
+                ctx.beginPath();
+                ctx.arc(
+                    size * (0.2 + i * 0.2), 
+                    size * 0.85, 
+                    size * 0.02, 
+                    0, Math.PI * 2
+                );
+                ctx.strokeStyle = 'rgba(0,212,255,0.3)';
+                ctx.stroke();
+            }
+            
+            // Efeito de brilho no "A"
+            ctx.shadowBlur = size * 0.2;
+            ctx.fillStyle = gradient;
+            ctx.font = `bold ${size * 0.5}px 'Segoe UI', 'Arial Black', sans-serif`;
+            ctx.fillText('A', size/2, size/2.2);
+            
+            // Reset shadow
+            ctx.shadowBlur = 0;
+        }
+        
+        function changeSize(size) {
+            currentSize = size;
+            drawLogo(size);
+            
+            // Atualizar botão ativo
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.includes(size)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        function downloadIcon() {
+            const link = document.createElement('a');
+            link.download = `atlas-icon-${currentSize}x${currentSize}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // Desenhar ícone inicial
+        drawLogo(512);
+        
+        // Adicionar Font Awesome para ícones
+        const fa = document.createElement('link');
+        fa.rel = 'stylesheet';
+        fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+        document.head.appendChild(fa);
+    </script>
+</body>

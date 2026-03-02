@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerar Ícones</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #1f1f2e; color: #fff; }
+        .sizes { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px,1fr)); gap: 20px; }
+        .icon-box { text-align: center; }
+        canvas { border-radius: 20px; box-shadow: 0 5px 15px rgba(0,212,255,0.3); }
+    </style>
+</head>
+<body>
+    <h1>Gerador de Ícones Placeholder</h1>
+    <p>Clique com botão direito em cada canvas e "Salvar como..."</p>
+    <div class="sizes" id="icons"></div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        const container = document.getElementById('icons');
+        
+        sizes.forEach(size => {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            canvas.id = `icon-${size}`;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Fundo gradiente
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#00d4ff');
+            gradient.addColorStop(1, '#00ff6a');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Borda
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = size * 0.05;
+            ctx.strokeRect(0, 0, size, size);
+            
+            // Texto
+            ctx.fillStyle = '#1f1f2e';
+            ctx.font = `bold ${size * 0.4}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('AP', size/2, size/2);
+            
+            const div = document.createElement('div');
+            div.className = 'icon-box';
+            div.innerHTML = `
+                <canvas width="${size}" height="${size}"></canvas>
+                <p>${size}x${size}</p>
+            `;
+            
+            const newCanvas = div.querySelector('canvas');
+            newCanvas.getContext('2d').drawImage(canvas, 0, 0);
+            
+            container.appendChild(div);
+        });
+    </script>
+</body>
+</html>
