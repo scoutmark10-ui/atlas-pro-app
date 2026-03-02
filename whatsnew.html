@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novidades - Atlas Pro</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f1f2e, #2a2a3f);
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #00d4ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .version-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00d4ff;
+        }
+        
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .version-number {
+            background: #00d4ff;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .version-date {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        .change-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            color: #ddd;
+        }
+        
+        .change-item i {
+            color: #00ff6a;
+            font-size: 0.8rem;
+        }
+        
+        .btn {
+            background: #00d4ff;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <i class="fas fa-rocket"></i>
+            Novidades
+        </h1>
+        
+        <div id="updatesList"></div>
+        
+        <button class="btn" onclick="window.location.href='index.html'">
+            <i class="fas fa-home"></i> Voltar ao Dashboard
+        </button>
+    </div>
+    
+    <script>
+        // Histórico de versões
+        const versions = [
+            {
+                version: "1.0.1",
+                date: "2026-03-03",
+                changes: [
+                    "Correção do radar de habilidades",
+                    "Tema dark/light mais suave",
+                    "Animações mais rápidas"
+                ]
+            },
+            {
+                version: "1.0.0",
+                date: "2026-03-01",
+                changes: [
+                    "Lançamento inicial",
+                    "7 métricas principais",
+                    "Gráfico radar",
+                    "Sistema de metas"
+                ]
+            }
+        ];
+        
+        const list = document.getElementById('updatesList');
+        
+        versions.forEach(ver => {
+            const card = document.createElement('div');
+            card.className = 'version-card';
+            
+            let changes = '';
+            ver.changes.forEach(change => {
+                changes += `
+                    <div class="change-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>${change}</span>
+                    </div>
+                `;
+            });
+            
+            card.innerHTML = `
+                <div class="version-header">
+                    <span class="version-number">v${ver.version}</span>
+                    <span class="version-date">${ver.date}</span>
+                </div>
+                ${changes}
+            `;
+            
+            list.appendChild(card);
+        });
+    </script>
+</body>
+</html>
