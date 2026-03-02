@@ -1246,3 +1246,56 @@ document.addEventListener('backbutton', function() {
         }
     }
 }, false);
+
+// ===== AUTO-UPDATE GITHUB =====
+async function checkForUpdates() {
+    try {
+        const response = await fetch('/version.json?' + Date.now());
+        const data = await response.json();
+        
+        const currentVersion = localStorage.getItem('appVersion');
+        
+        if (currentVersion !== data.version) {
+            showNotification(
+                `🚀 Nova versão ${data.version} disponível! Atualizando...`, 
+                'info'
+            );
+            
+            // Forçar recarregar e limpar cache
+            localStorage.setItem('appVersion', data.version);
+            
+            // Limpar caches antigos
+            if ('caches' in window) {
+                const keys = await caches.keys();
+                await Promise.all(keys.map(key => caches.delete(key)));
+            }
+            
+            // Recarregar após 2 segundos
+            setTimeout(() => {
+                window.location.reload(true);
+            }, 2000);
+        }
+    } catch (error) {
+        console.log('Erro ao verificar versão:', error);
+    }
+}
+
+// Verificar atualizações a cada 30 minutos
+setInterval(checkForUpdates, 30 * 60 * 1000);
+
+// Verificar ao iniciar
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(checkForUpdates, 3000);
+});
+
+// Botão de atualização manual
+function manualUpdate() {
+    if ('caches' in window) {
+        caches.keys().then(keys => {
+            Promise.all(keys.map(key => caches.delete(key))).then(() => {
+                showNotification('Cache limpo! Recarregando...', 'success');
+                setTimeout(() => window.location.reload(true), 1500);
+            });
+        });
+    }
+}
