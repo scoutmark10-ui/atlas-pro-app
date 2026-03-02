@@ -105,14 +105,20 @@
                 </button>
             </div>
 
-            <!-- Sobre -->
-            <div class="settings-card">
-                <h3><i class="fas fa-info-circle"></i> Sobre</h3>
-                <p>Versão: <strong>1.0.0</strong></p>
-                <p>Desenvolvido por: <strong>Zynko</strong></p>
-                <p>Ano: <strong>2026</strong></p>
-                <p>Modo: <span id="onlineStatus">Online</span></p>
-            </div>
+            <!-- Botão de atualização manual -->
+<div class="settings-card">
+    <h3><i class="fas fa-sync-alt"></i> Atualizações</h3>
+    <div class="setting-item">
+        <p>Versão atual: <strong id="currentVersion">1.0.0</strong></p>
+        <p>Última verificação: <span id="lastUpdateCheck">-</span></p>
+    </div>
+    <button class="settings-btn" onclick="manualUpdate()">
+        <i class="fas fa-sync-alt"></i> Verificar Atualizações
+    </button>
+    <button class="settings-btn" onclick="window.location.reload(true)">
+        <i class="fas fa-redo-alt"></i> Recarregar App
+    </button>
+</div>
         </div>
     </div>
 
