@@ -293,3 +293,26 @@ async function syncData() {
   console.error('Erro na sincronização:', error);
  }
 }
+
+// Lidar com protocol handlers
+self.addEventListener('fetch', event => {
+    const url = new URL(event.request.url);
+    
+    // Lidar com protocolo personalizado
+    if (url.protocol === 'web+atlas:') {
+        event.respondWith(handleProtocol(url));
+    }
+});
+
+async function handleProtocol(url) {
+    const command = url.searchParams.get('command');
+    // Processar comando
+    return Response.redirect('/handle-command?cmd=' + command);
+}
+
+// Lidar com file handlers
+self.addEventListener('fetch', event => {
+    if (event.request.url.includes('/open-file')) {
+        event.respondWith(handleFileOpen(event.request));
+    }
+});
