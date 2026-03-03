@@ -86,20 +86,7 @@
       "label": "Visualização mobile"
     }
   ],
-  "shortcuts": [
-    {
-      "name": "Novo Recurso",
-      "short_name": "Novo",
-      "description": "Criar novo item rapidamente",
-      "url": "/new",
-      "icons": [
-        {
-          "src": "assets/icons/shortcut-icon.png",
-          "sizes": "96x96"
-        }
-      ]
-    }
-  ],
+  // "shortcuts": [ ... ],  // COMENTADO TEMPORARIAMENTE
   "related_applications": [
     {
       "platform": "webapp",
