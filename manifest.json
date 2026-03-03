@@ -8,12 +8,12 @@
   "display": "standalone",
   "display_override": [
     "standalone",
-    "fullscreen",
+    "window-controls-overlay",
     "minimal-ui",
-    "tabbed",
-    "window-controls-overlay"
+    "fullscreen",
+    "tabbed"
   ],
-  "orientation": "portrait",
+  "orientation": "any",
   "theme_color": "#2196f3",
   "background_color": "#ffffff",
   "categories": ["productivity", "utilities", "business"],
@@ -73,32 +73,32 @@
   
   "screenshots": [
     {
-      "src": "assets/screenshots/home.jpg",
-      "sizes": "1080x1920",
+      "src": "assets/screenshots/desktop-dashboard.jpg",
+      "sizes": "1920x1080",
       "type": "image/jpeg",
       "form_factor": "wide",
-      "label": "Dashboard - Visão geral das métricas"
+      "label": "Dashboard no PC - Visão completa"
     },
     {
-      "src": "assets/screenshots/metrics.jpg",
-      "sizes": "1080x1920",
+      "src": "assets/screenshots/desktop-metrics.jpg",
+      "sizes": "1920x1080",
       "type": "image/jpeg",
       "form_factor": "wide",
-      "label": "Métricas detalhadas com gráficos"
-    },
-    {
-      "src": "assets/screenshots/goals.jpg", 
-      "sizes": "1080x1920",
-      "type": "image/jpeg",
-      "form_factor": "wide",
-      "label": "Acompanhamento de objetivos"
+      "label": "Métricas detalhadas no PC"
     },
     {
       "src": "assets/screenshots/mobile-dashboard.jpg",
       "sizes": "720x1280",
       "type": "image/jpeg",
       "form_factor": "narrow",
-      "label": "Dashboard em dispositivos móveis"
+      "label": "Dashboard no celular"
+    },
+    {
+      "src": "assets/screenshots/mobile-metrics.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Métricas no celular"
     }
   ],
   
@@ -117,7 +117,7 @@
     },
     {
       "name": "Métricas",
-      "short_name": "Métricas",
+      "short_name": "📊 Métricas",
       "description": "Visualizar métricas detalhadas",
       "url": "/metrics.html",
       "icons": [
@@ -129,7 +129,7 @@
     },
     {
       "name": "Objetivos",
-      "short_name": "Metas",
+      "short_name": "🎯 Metas",
       "description": "Gerenciar objetivos",
       "url": "/goals.html",
       "icons": [
@@ -141,7 +141,7 @@
     },
     {
       "name": "Configurações",
-      "short_name": "Config",
+      "short_name": "⚙️ Config",
       "description": "Ajustes do aplicativo",
       "url": "/settings.html",
       "icons": [
@@ -153,7 +153,7 @@
     },
     {
       "name": "Nova Anotação",
-      "short_name": "Anotar",
+      "short_name": "📝 Anotar",
       "description": "Criar uma nova anotação rápida",
       "url": "/new-note.html",
       "icons": [
@@ -322,6 +322,13 @@
         "src": "assets/icons/atlas-icon-96x96.png",
         "sizes": "96x96"
       },
+      "screenshots": [
+        {
+          "src": "assets/screenshots/widget-goals.jpg",
+          "sizes": "400x400",
+          "type": "image/jpeg"
+        }
+      ],
       "update_frequency": 1800,
       "default_width": 2,
       "default_height": 2,
@@ -368,13 +375,18 @@
       "url": "https://apps.apple.com/app/atlas-pro/id123456789"
     },
     {
+      "platform": "windows",
+      "url": "https://www.microsoft.com/store/apps/9WZDNCRDASH0",
+      "id": "9WZDNCRDASH0"
+    },
+    {
       "platform": "webapp",
       "url": "https://scoutmark10-ui.github.io/atlas-pro-app/manifest.json"
     }
   ],
   
   "launch_handler": {
-    "client_mode": ["focus-existing", "navigate-existing"]
+    "client_mode": ["focus-existing", "navigate-new"]
   },
   
   "file_handlers": [
@@ -384,7 +396,8 @@
         "text/csv": [".csv"],
         "application/json": [".json"],
         "application/vnd.ms-excel": [".xlsx", ".xls"],
-        "text/plain": [".txt"]
+        "text/plain": [".txt"],
+        "application/pdf": [".pdf"]
       },
       "icons": [
         {
