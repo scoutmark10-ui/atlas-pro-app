@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compartilhar - Atlas Pro</title>
+</head>
+<body>
+    <h1>Conteúdo Recebido</h1>
+    <div id="sharedContent"></div>
+    <script>
+        // Processar dados compartilhados
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get('title');
+        const text = urlParams.get('text');
+        const url = urlParams.get('url');
+        
+        document.getElementById('sharedContent').innerHTML = `
+            <h3>${title}</h3>
+            <p>${text}</p>
+            <a href="${url}">${url}</a>
+        `;
+    </script>
+</body>
+</html>
