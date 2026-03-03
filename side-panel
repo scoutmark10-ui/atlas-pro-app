@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painel Lateral - Atlas Pro</title>
+    <style>
+        body { width: 100%; height: 100%; margin: 0; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Painel Rápido</h2>
+    <div class="quick-metrics">
+        <!-- Métricas rápidas -->
+    </div>
+</body>
+</html>
