@@ -1,41 +1,48 @@
 {
   "name": "Atlas Pro",
   "short_name": "Atlas",
-  "description": "Aplicativo Atlas Pro",
+  "description": "Aplicativo Atlas Pro - Sua ferramenta completa",
+  "id": "/?source=pwa",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "display_override": ["standalone", "fullscreen"],
+  "orientation": "portrait",
   "theme_color": "#2196f3",
+  "background_color": "#ffffff",
+  "categories": ["productivity", "utilities"],
+  "lang": "pt-BR",
+  "dir": "ltr",
   "icons": [
     {
       "src": "assets/icons/atlas-icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "assets/icons/atlas-icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "assets/icons/atlas-icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "assets/icons/atlas-icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "assets/icons/atlas-icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "assets/icons/atlas-icon-192x192.png",
@@ -55,5 +62,49 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshots/home.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Tela inicial do Atlas Pro"
+    },
+    {
+      "src": "assets/screenshots/features.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "wide", 
+      "label": "Funcionalidades principais"
+    },
+    {
+      "src": "assets/screenshots/mobile-home.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Visualização mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Novo Recurso",
+      "short_name": "Novo",
+      "description": "Criar novo item rapidamente",
+      "url": "/new",
+      "icons": [
+        {
+          "src": "assets/icons/shortcut-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://scoutmark10-ui.github.io/atlas-pro-app/manifest.json"
+    }
+  ],
+  "prefer_related_applications": false
 }
