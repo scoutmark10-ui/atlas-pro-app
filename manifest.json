@@ -6,13 +6,20 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["standalone", "fullscreen", "minimal-ui"],
+  "display_override": [
+    "standalone",
+    "fullscreen",
+    "minimal-ui",
+    "tabbed",
+    "window-controls-overlay"
+  ],
   "orientation": "portrait",
   "theme_color": "#2196f3",
   "background_color": "#ffffff",
   "categories": ["productivity", "utilities", "business"],
   "lang": "pt-BR",
   "dir": "ltr",
+  
   "icons": [
     {
       "src": "assets/icons/atlas-icon-72x72.png",
@@ -63,6 +70,7 @@
       "purpose": "any maskable"
     }
   ],
+  
   "screenshots": [
     {
       "src": "assets/screenshots/home.jpg",
@@ -93,6 +101,7 @@
       "label": "Dashboard em dispositivos móveis"
     }
   ],
+  
   "shortcuts": [
     {
       "name": "Dashboard",
@@ -143,16 +152,288 @@
       ]
     }
   ],
+  
+  "note_taking": {
+    "new_note_url": "/new-note.html",
+    "icon": {
+      "src": "assets/icons/atlas-icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    "save_note_url": "/save-note"
+  },
+  
+  "share_target": {
+    "action": "/share-handler",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "images",
+          "accept": ["image/*"]
+        },
+        {
+          "name": "files",
+          "accept": ["*/*"]
+        }
+      ]
+    }
+  },
+  
+  "tabbed": {
+    "tabs": [
+      {
+        "name": "Dashboard",
+        "url": "/",
+        "icon": {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      },
+      {
+        "name": "Métricas",
+        "url": "/metrics.html",
+        "icon": {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      },
+      {
+        "name": "Objetivos",
+        "url": "/goals.html",
+        "icon": {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      },
+      {
+        "name": "Configurações",
+        "url": "/settings.html",
+        "icon": {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      }
+    ]
+  },
+  
+  "window_controls_overlay": {
+    "icon": {
+      "src": "assets/icons/atlas-icon-72x72.png",
+      "sizes": "72x72"
+    },
+    "controls": [
+      {
+        "name": "Minimizar",
+        "action": "minimize"
+      },
+      {
+        "name": "Maximizar",
+        "action": "maximize"
+      },
+      {
+        "name": "Fechar",
+        "action": "close"
+      }
+    ]
+  },
+  
+  "edge_side_panel": {
+    "panel": {
+      "name": "Atlas Pro Painel",
+      "url": "/side-panel.html",
+      "icon": {
+        "src": "assets/icons/atlas-icon-96x96.png",
+        "sizes": "96x96"
+      },
+      "width": 320,
+      "height": 600,
+      "can_be_default": true
+    }
+  },
+  
+  "widgets": [
+    {
+      "name": "Resumo de Métricas",
+      "description": "Visualize suas principais métricas",
+      "url": "/widget-metrics.html",
+      "sizes": [
+        {
+          "width": 1,
+          "height": 1
+        },
+        {
+          "width": 2,
+          "height": 2
+        },
+        {
+          "width": 4,
+          "height": 2
+        }
+      ],
+      "icon": {
+        "src": "assets/icons/atlas-icon-96x96.png",
+        "sizes": "96x96"
+      },
+      "screenshots": [
+        {
+          "src": "assets/screenshots/widget-small.jpg",
+          "sizes": "200x200",
+          "type": "image/jpeg"
+        },
+        {
+          "src": "assets/screenshots/widget-large.jpg",
+          "sizes": "400x200",
+          "type": "image/jpeg"
+        }
+      ],
+      "update_frequency": 3600,
+      "default_width": 2,
+      "default_height": 2,
+      "theme": "light"
+    },
+    {
+      "name": "Objetivos Rápidos",
+      "description": "Acompanhe seus objetivos diários",
+      "url": "/widget-goals.html",
+      "sizes": [
+        {
+          "width": 2,
+          "height": 2
+        }
+      ],
+      "icon": {
+        "src": "assets/icons/atlas-icon-96x96.png",
+        "sizes": "96x96"
+      },
+      "screenshots": [
+        {
+          "src": "assets/screenshots/widget-goals.jpg",
+          "sizes": "400x400",
+          "type": "image/jpeg"
+        }
+      ],
+      "update_frequency": 1800,
+      "default_width": 2,
+      "default_height": 2,
+      "theme": "dark"
+    }
+  ],
+  
+  "scope_extensions": [
+    {
+      "origin": "https://scoutmark10-ui.github.io"
+    },
+    {
+      "origin": "https://api.atlaspro.com"
+    },
+    {
+      "origin": "https://auth.atlaspro.com"
+    },
+    {
+      "origin": "https://storage.atlaspro.com"
+    }
+  ],
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+atlas",
+      "url": "/handle-protocol?command=%s"
+    },
+    {
+      "protocol": "web+atlasnote",
+      "url": "/handle-note?data=%s"
+    }
+  ],
+  
+  "iarc_rating_id": "e.g. e07b54e9-bb95-38c1-90fb-f0a9a65c1e62",
+  
   "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.atlas.pro",
+      "id": "com.atlas.pro"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/app/atlas-pro/id123456789"
+    },
     {
       "platform": "webapp",
       "url": "https://scoutmark10-ui.github.io/atlas-pro-app/manifest.json"
     }
   ],
+  
   "prefer_related_applications": false,
-  "scope_extensions": [
+  
+  "launch_handler": {
+    "client_mode": ["focus-existing", "navigate-existing"]
+  },
+  
+  "file_handlers": [
+    {
+      "action": "/open-file",
+      "accept": {
+        "text/csv": [".csv"],
+        "application/json": [".json"],
+        "application/vnd.ms-excel": [".xlsx", ".xls"],
+        "text/plain": [".txt"]
+      },
+      "icons": [
+        {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  
+  "url_handlers": [
     {
       "origin": "https://scoutmark10-ui.github.io"
+    }
+  ],
+  
+  "edge_side_panel": {
+    "panel": {
+      "name": "Atlas Pro Side Panel",
+      "url": "/side-panel.html",
+      "icon": {
+        "src": "assets/icons/atlas-icon-96x96.png",
+        "sizes": "96x96"
+      },
+      "width": 320,
+      "height": 600
+    }
+  },
+  
+  "display_override": [
+    "window-controls-overlay",
+    "minimal-ui",
+    "fullscreen",
+    "standalone"
+  ],
+  
+  "handle_links": "auto",
+  
+  "prefer_related_applications": false,
+  
+  "shortcuts": [
+    {
+      "name": "Nova Anotação",
+      "short_name": "Anotar",
+      "description": "Criar uma nova anotação rápida",
+      "url": "/new-note.html",
+      "icons": [
+        {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }
