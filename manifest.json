@@ -1,16 +1,16 @@
 {
   "name": "Atlas Pro",
   "short_name": "Atlas",
-  "description": "Aplicativo Atlas Pro - Sua ferramenta completa",
+  "description": "Aplicativo Atlas Pro - Gerencie suas métricas e objetivos de forma eficiente",
   "id": "/?source=pwa",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["standalone", "fullscreen"],
+  "display_override": ["standalone", "fullscreen", "minimal-ui"],
   "orientation": "portrait",
   "theme_color": "#2196f3",
   "background_color": "#ffffff",
-  "categories": ["productivity", "utilities"],
+  "categories": ["productivity", "utilities", "business"],
   "lang": "pt-BR",
   "dir": "ltr",
   "icons": [
@@ -69,29 +69,90 @@
       "sizes": "1080x1920",
       "type": "image/jpeg",
       "form_factor": "wide",
-      "label": "Tela inicial do Atlas Pro"
+      "label": "Dashboard - Visão geral das métricas"
     },
     {
-      "src": "assets/screenshots/features.jpg",
+      "src": "assets/screenshots/metrics.jpg",
       "sizes": "1080x1920",
       "type": "image/jpeg",
-      "form_factor": "wide", 
-      "label": "Funcionalidades principais"
+      "form_factor": "wide",
+      "label": "Métricas detalhadas com gráficos"
     },
     {
-      "src": "assets/screenshots/mobile-home.jpg",
+      "src": "assets/screenshots/goals.jpg", 
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Acompanhamento de objetivos"
+    },
+    {
+      "src": "assets/screenshots/mobile-dashboard.jpg",
       "sizes": "720x1280",
       "type": "image/jpeg",
       "form_factor": "narrow",
-      "label": "Visualização mobile"
+      "label": "Dashboard em dispositivos móveis"
     }
   ],
-  // "shortcuts": [ ... ],  // COMENTADO TEMPORARIAMENTE
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Início",
+      "description": "Ver dashboard principal",
+      "url": "/",
+      "icons": [
+        {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Métricas",
+      "short_name": "Métricas",
+      "description": "Visualizar métricas detalhadas",
+      "url": "/metrics.html",
+      "icons": [
+        {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Objetivos",
+      "short_name": "Metas",
+      "description": "Gerenciar objetivos",
+      "url": "/goals.html",
+      "icons": [
+        {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Configurações",
+      "short_name": "Config",
+      "description": "Ajustes do aplicativo",
+      "url": "/settings.html",
+      "icons": [
+        {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
   "related_applications": [
     {
       "platform": "webapp",
       "url": "https://scoutmark10-ui.github.io/atlas-pro-app/manifest.json"
     }
   ],
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "scope_extensions": [
+    {
+      "origin": "https://scoutmark10-ui.github.io"
+    }
+  ]
 }
