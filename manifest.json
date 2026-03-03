@@ -150,6 +150,18 @@
           "sizes": "96x96"
         }
       ]
+    },
+    {
+      "name": "Nova Anotação",
+      "short_name": "Anotar",
+      "description": "Criar uma nova anotação rápida",
+      "url": "/new-note.html",
+      "icons": [
+        {
+          "src": "assets/icons/atlas-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ],
   
@@ -310,13 +322,6 @@
         "src": "assets/icons/atlas-icon-96x96.png",
         "sizes": "96x96"
       },
-      "screenshots": [
-        {
-          "src": "assets/screenshots/widget-goals.jpg",
-          "sizes": "400x400",
-          "type": "image/jpeg"
-        }
-      ],
       "update_frequency": 1800,
       "default_width": 2,
       "default_height": 2,
@@ -368,8 +373,6 @@
     }
   ],
   
-  "prefer_related_applications": false,
-  
   "launch_handler": {
     "client_mode": ["focus-existing", "navigate-existing"]
   },
@@ -398,42 +401,6 @@
     }
   ],
   
-  "edge_side_panel": {
-    "panel": {
-      "name": "Atlas Pro Side Panel",
-      "url": "/side-panel.html",
-      "icon": {
-        "src": "assets/icons/atlas-icon-96x96.png",
-        "sizes": "96x96"
-      },
-      "width": 320,
-      "height": 600
-    }
-  },
-  
-  "display_override": [
-    "window-controls-overlay",
-    "minimal-ui",
-    "fullscreen",
-    "standalone"
-  ],
-  
   "handle_links": "auto",
-  
-  "prefer_related_applications": false,
-  
-  "shortcuts": [
-    {
-      "name": "Nova Anotação",
-      "short_name": "Anotar",
-      "description": "Criar uma nova anotação rápida",
-      "url": "/new-note.html",
-      "icons": [
-        {
-          "src": "assets/icons/atlas-icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    }
-  ]
+  "prefer_related_applications": false
 }
